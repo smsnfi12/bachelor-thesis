@@ -16,11 +16,11 @@ The In-Ice Array is the largest component and consists of 86 vertical strings, e
 to \SI{2450}{\metre}. Each of the strings contains 60 Digital Optical Modules (DOMs) which are evenly separated by \SI{17}{\metre} alongside their 
 respective string, making a total number of \num{5160} DOMs. 
 
-The IceTop, as the name suggests, in located at the surface of the ice with \num{162} tanks filled with ice and equipped with PMTs. 
+The IceTop, as the name suggests, is located at the surface of the ice with \num{162} tanks filled with ice and equipped with PMTs. 
 The tanks are arranged in 81 stations in a manner that approximately mimics the structure of the In-Ice Array. 
 
 The DeepCore is a sub-array within the In-Ice Array and is located at depth beneath \SI{1750}{\metre}.It contains an extra \num{8} strings alongside the 
-\num{7} strings from the In-Ice Array. This creates a more densly packed arrangement of DOMs in the lower center of the detector, which increases it's 
+\num{7} strings from the In-Ice Array. This creates a more densly packed arrangement of DOMs in the lower center of the detector, which increases its 
 ability to detect low-energy signals.
 
 Figure~\ref{fig:icecube_sketch_01} shows a visual representation of this structure.
@@ -43,7 +43,7 @@ the DOM\. A sketch of a PMT is shown in figure~\ref{fig:pmt01}.
     \caption{The principle construction of a photomultiplier.}\label{fig:pmt01}
 \end{figure}
 
-When a photon with sufficient energy hits the photocathode of the PMT, it's energy gets absorbed and an electron is emitted via the photoelectric effect.
+When a photon with sufficient energy hits the photocathode of the PMT, its energy gets absorbed and an electron is emitted via the photoelectric effect.
 the electron is accelerated towards the first dynode due to its electric charge. Hitting the dynode triggers secondary emittions, increasing the total 
 number of electrons emitted. This process repeats itself for however many dynodes are the PMT accompasses. After the final amplification by the last 
 dynode the electrons are collected by the anode, which produces a current proportional to the intensity of the initial light signal, meaning the amount of
@@ -52,7 +52,15 @@ photons hitting the PMT\@.
 \section{Cherenkov radiation}
 
 The light detected by the photomultipliers is only a secondary signal called Cherenkov radiation. It is created when a charged particle travels through a 
-dielectric medium with a velocity greater than the speed of light inside of the medium. The charged particle polarizes the medium's molecules in it's
+dielectric medium with a velocity greater than the speed of light inside of the medium. The charged particle polarizes the medium's molecules in its
 immediate surroundings while passing through it. The excited molecules then return to their ground state by emitting their superfluous energy as light.
 Because the light travels slower than the particle exciting the molecules, the light waves do not interfere destructively, but build a conical shock front 
-similar in principle to that of an object, moving through air at supersonic velocities. 
+similar in principle to that of an object, moving through air at supersonic velocities. This cone of light is the Cherenkov radiation detected by the PMTs.
+
+\section{Muons}
+
+A significant percentile of the particles measured in IceCube are muons, which are elementary particles categorized as leptons by the standard model. This 
+they carry an electric charge of $\stackrel{+}{-}\num{1}e$ and have spin $\frac{1}{2}$. The mass of the muon is \num{105.658}\text{MeV}. IceCube detects
+muons at a rate of roughly \SI{2500}{Hz}. While they are muons originating from outer space that hit the earths surface, the vast majority of muons detected
+on earth are created in the atmosphere. When cosmic rays collide with the atmosphere's molecules, a multitude of secondary particles are created including 
+pions and kaons, aswell as their respective antiparticles. Due to their short lifetimes, they decay via beta decay almost immediately. 
