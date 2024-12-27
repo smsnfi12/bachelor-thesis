@@ -59,8 +59,47 @@ similar in principle to that of an object, moving through air at supersonic velo
 
 \section{Muons}
 
-A significant percentile of the particles measured in IceCube are muons, which are elementary particles categorized as leptons by the standard model. This 
-they carry an electric charge of $\stackrel{+}{-}\num{1}e$ and have spin $\frac{1}{2}$. The mass of the muon is \num{105.658}\text{MeV}. IceCube detects
+A significant percentile of the particles measured in IceCube are muons, which are elementary particles categorized as leptons by the standard model.
+This means they carry an electric charge of $\pm 1e$ and have spin $\frac{1}{2}$. The mass of the muon is \num{105.658}\text{MeV}. IceCube detects
 muons at a rate of roughly \SI{2500}{Hz}. While they are muons originating from outer space that hit the earths surface, the vast majority of muons detected
 on earth are created in the atmosphere. When cosmic rays collide with the atmosphere's molecules, a multitude of secondary particles are created including 
-pions and kaons, aswell as their respective antiparticles. Due to their short lifetimes, they decay via beta decay almost immediately. 
+pions and kaons. % Their pion's lifetime is about \SI{2.60e-8}{s} for a charged $\pi⁺$ or $\pi⁻$ and around \SI{8.52e-17}{s} for the neutral $\pi⁰$. The 
+% kaons lifetime is also of a similar magnitude, meaning both of these particles decay relatively quickly after being created. 
+The average lifetime of these mesons are of the magnitude of \SI{e8}{s} or less. Their resulting decay products include muons which are produced via the 
+following decay modes:\\
+
+\begin{align}
+    \pi^\pm \to \mu^\pm + \nu_\mu \\
+    K^\pm \to \mu^\pm + \nu_\mu
+\end{align}
+
+These muons have an average lifetime of about \SI{2.2}{ms}, which is enough for a significant amount of them reaching the earths surface due the their 
+ultrarelativistic velocities. When a muon travels through the ice within IceCube, it produces Cherenkov radiation due to its charge and high velocities and 
+can thus be indirectly measured.
+
+\section{Data aquisition}
+
+A single DOM measureing a signal is not able to distinguish between different types of events, since its only capability lies in the detection of a current
+caused by photons hitting the PMT\@. In order to distinguish between noise and possible signals stemming from Cherenkov radiation, multiple requirements are
+put in place to ensure that the full data of a signal is only saved for those signals that might constitute a real event. The data aquisition systems (DAQ)
+is the software complex responsible for filtering signals by different characteristics. The first step for any signal is to scan for so called hard local 
+coincidences (HLC). 
+There are so called triggers implemented which search for multiplicities of HLC hits within a certain time frame and with certain spatial requirements.
+The simplest one is the simple multiplicity trigger (SMT), which triggers whenever at least $N$ HLC hits occur within a time frame of some 
+\si{\micro\second}. This sets a set of intuitive conditions for grouping a cluster of signals into an event that could be a muon or another 
+charged particle emitting Cherenkov radiation. 
+Another trigger is the fixed rate trigger (FRT) which is of great importance for the analysis of this thesis. The FRT does not get triggered 
+by any multiplicity of events. It is a timed trigger which reads out the entire detector, meaning all functioning DOMs for \SI{10}{ms}
+every \SI{300}{s}. Since there are no conditions of any kind in place for this trigger, it saves everything being measured during the 
+readout time frame. This allows a precise look into the low energy spectrum of signals hitting the detector which is significant for the 
+analysis of the backround noise in IceCube. An overview of different triggers, which are not primarily significant for this thesis is shown 
+in figure~\ref{fig:triggers}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{content/pictures/trigger_list.png}
+    \caption{A list of all triggers in IceCube.}\label{fig:triggers}
+\end{figure}
+
+
+
