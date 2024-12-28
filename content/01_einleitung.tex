@@ -12,14 +12,14 @@ The IceCube neutrino detector is a cubic kilometer scale particle detector locat
 the detector is the detection of high energy neutrinos as messenger particles for study of astrophysical sources. The detector unit is split into three 
 parts, which are the In-Ice Array, the IceTop, and the DeepCore. 
 
-The In-Ice Array is the largest component and consists of 86 vertical strings, extending vertically into the ice below the surface for \SI{1450}{\metre} 
-to \SI{2450}{\metre}. Each of the strings contains 60 Digital Optical Modules (DOMs) which are evenly separated by \SI{17}{\metre} alongside their 
-respective string, making a total number of \num{5160} DOMs. 
+The In-Ice Array is the largest component and consists of 86 vertical strings, extending vertically into the ice below the surface for \SI{2450}{\metre}. 
+Each of the strings contains 60 Digital Optical Modules (DOMs) starting from a depth of \SI{1450}{\metre} all the way down to \SI{2450}{\metre}
+The DOMs are evenly separated by \SI{17}{\metre} alongside their respective string, making a total number of \num{5160} DOMs. 
 
 The IceTop, as the name suggests, is located at the surface of the ice with \num{162} tanks filled with ice and equipped with PMTs. 
 The tanks are arranged in 81 stations in a manner that approximately mimics the structure of the In-Ice Array. 
 
-The DeepCore is a sub-array within the In-Ice Array and is located at depth beneath \SI{1750}{\metre}.It contains an extra \num{8} strings alongside the 
+The DeepCore is a sub-array within the In-Ice Array and is located at depths beneath \SI{1750}{\metre}. It contains an extra \num{8} strings alongside the 
 \num{7} strings from the In-Ice Array. This creates a more densly packed arrangement of DOMs in the lower center of the detector, which increases its 
 ability to detect low-energy signals.
 
@@ -63,10 +63,8 @@ A significant percentile of the particles measured in IceCube are muons, which a
 This means they carry an electric charge of $\pm 1e$ and have spin $\frac{1}{2}$. The mass of the muon is \num{105.658}\text{MeV}. IceCube detects
 muons at a rate of roughly \SI{2500}{Hz}. While they are muons originating from outer space that hit the earths surface, the vast majority of muons detected
 on earth are created in the atmosphere. When cosmic rays collide with the atmosphere's molecules, a multitude of secondary particles are created including 
-pions and kaons. % Their pion's lifetime is about \SI{2.60e-8}{s} for a charged $\pi⁺$ or $\pi⁻$ and around \SI{8.52e-17}{s} for the neutral $\pi⁰$. The 
-% kaons lifetime is also of a similar magnitude, meaning both of these particles decay relatively quickly after being created. 
-The average lifetime of these mesons are of the magnitude of \SI{e8}{s} or less. Their resulting decay products include muons which are produced via the 
-following decay modes:\\
+pions and kaons. The average lifetime of these mesons are of the magnitude of \SI{e8}{s} or less. Their resulting decay products include muons which are 
+produced via the following decay modes:\\
 
 \begin{align}
     \pi^\pm \to \mu^\pm + \nu_\mu \\
@@ -77,7 +75,7 @@ These muons have an average lifetime of about \SI{2.2}{ms}, which is enough for 
 ultrarelativistic velocities. When a muon travels through the ice within IceCube, it produces Cherenkov radiation due to its charge and high velocities and 
 can thus be indirectly measured.
 
-\section{Data aquisition}
+\section{Data aquisition}\label{sec:daq}
 
 A single DOM measureing a signal is not able to distinguish between different types of events, since its only capability lies in the detection of a current
 caused by photons hitting the PMT\@. In order to distinguish between noise and possible signals stemming from Cherenkov radiation, multiple requirements are
@@ -101,5 +99,36 @@ in figure~\ref{fig:triggers}.
     \caption{A list of all triggers in IceCube.}\label{fig:triggers}
 \end{figure}
 
+\section{True coincident events}
 
+The primary goal of this thesis is the analysis of coincident events in IceCube. This is not to be confused with coincident signals or hits, which are used 
+to determine if an event is constituted by the signals. A coincident however means that two or more real events take place in the detector within the time 
+frame of a readout window from some trigger. The SMT for example will group together any multiplicity of HLC hits in the detector and categorize them as one
+event, as long as no other measures are taken. The resulting events would falsely be forwarded as one which leads to the loss of information aswell as 
+a count rate of events in the long run. \\
+Firstly, a rough estimation can be made about the percentile of coincident events for any given event rate. A single particle type's spectrum can be 
+estimated to be poisson distributed, so probability to measure $k$ events becomes\\ 
+
+\begin{equation}
+    P_{\lambda}(k) = \frac{\lambda^k}{k!}\text{e}^(-\lambda) \; .
+\end{equation}\\
+
+$\lambda$ is the expected value, which can be rewritten as \\
+
+\begin{equation}
+    \lambda = R \cdot \tau \; ,
+\end{equation}\\
+
+where $R$ is the rate of incoming particles and $\tau$ is the search time frame set by the trigger, as explained in section\.~\ref{sec:daq}. 
+The value of interest is the probability for 2 or more particles hitting the detector within a certain time frame. This would be \\
+
+\begin{equation}
+    P_{\lambda = R\cdot\tau}(k\geq2) = e^{- R\cdot\tau} \cdot \sum_{k=2}^\infty \frac{{(R\cdot\tau)}^k}{k!} \; .
+\end{equation}\\ 
+
+Multiplying with the event rate $R$ then yields the coincidence rate $R_{co}$ depending on the event rate and the readout window $\tau$:
+
+\begin{equation}
+    R_{co}(R,\tau) = R \cdot e^{- R\cdot\tau} \cdot \sum_{k=2}^\infty \frac{{(R\cdot\tau)}^k}{k!}\;.
+\end{equation}\\
 
