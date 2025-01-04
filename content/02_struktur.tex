@@ -47,4 +47,23 @@ single event are shown in the Histograms~\ref{fig:single_charge_hist}. As expect
 \end{figure}
 \FloatBarrier
 
-The next Histograms show the charge distributions for the 
+In the histograms~\ref{fig:monthly_charge_hist} the data is grouped together in a way that shows one entry as one event where the charges are summed up, meaning the 
+integrals of the histograms~\ref{fig:single_charge_hist} would each make up one event. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Plots/monthly_charge_hist.pdf}
+    \caption{histograms of the charge distribution of all events making up entire months of 2016.}
+    \label{fig:monthly_charge_hist}
+\end{figure}
+\FloatBarrier
+Best visible in the histogram for may, up to a charge value of around \SI{3300}{PE} the count rate follows a pretty clear gaussian distribution, which is followed 
+by an exponential decline. If the background noise, whatever it might be, follows a gaussian distribution, a sensible idea would be to fit a gauss for the charge 
+values up to the critical point, after which the distribution type changes. Then a filter which is looking for 'real' events might filter out anything that lies 
+within the fitted realm. 
+
+\section{Muon Rate}
+
+As explained in \ref{sec:coin} the probability function of coincidence events against total events can be estimated to follow a poisson distribution.
+A theoretical distribution for different trigger windows is shown in figure(). In order to put this into a meaningful context, data() is analyzed to extract a 
+connection between the event rate and other significant variable, such as energy. For muons,  
