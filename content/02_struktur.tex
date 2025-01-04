@@ -22,11 +22,29 @@
 % In der hier verwendeten \KOMAScript-Klasse \texttt{scrbook} ist die oberste Gliederungsebene,
 % die in der Bachelorarbeit verwendet werden sollte, das \texttt{\textbackslash chapter}.
 
-% Ein Kapitel sollte erst dann in tiefere Gliederungsebenen unterteilt werden, wenn es auch wirklich etwas zu unterteilen gibt. Es sollte keine Kapitel mit nur einem Unterkapitel (\texttt{\textbackslash section}) geben.
+% Ein Kapitel sollte erst dann in tiefere Gliederungsebenen unterteilt werden, wenn es auch wirklich etwas zu unterteilen gibt. 
+% Es sollte keine Kapitel mit nur einem Unterkapitel (\texttt{\textbackslash section}) geben.
 
-% In dieser Vorlage ist die Tiefe des Inhaltsverzeichnisses auf \texttt{chapter} und \texttt{section} beschränkt. Möchten Sie diese Beschränkung aufheben, entfernen Sie den Befehl
+% In dieser Vorlage ist die Tiefe des Inhaltsverzeichnisses auf \texttt{chapter} und \texttt{section} beschränkt. 
+% Möchten Sie diese Beschränkung aufheben, entfernen Sie den Befehl
 % \begin{verbatim}
 %             \setcounter{tocdepth}{1}
 % \end{verbatim}
 % aus der Präambel oder ändern Sie den Zahlenwert entsprechend. Das Inhaltsverzeichnis sollte für eine Bachelorarbeit auf eine Seite passen.
 
+\section{Analysis of the Fixed Rate Trigger}
+
+The functionality of the FRT is described in section~\ref{sec:daq}. In the following section, the spectrum of the data aquired by the FRT will be analyzed in 
+detail. In this section, an event will mean everyting that is measured within a single trigger window. A link to the exact data used can be found 
+in the appendix. The following Plots give an overview of the charge distribution of the signals collected by the FRT. Firstly, the charge distribution making up a 
+single event are shown in the Histograms~\ref{fig:single_charge_hist}. As expected, the counts follow a visible poisson distribution.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Plots/single_charge_hist.pdf}
+    \caption{histograms of the charge distribution of a subset of FRT events from April 2016.}
+    \label{fig:single_charge_hist}
+\end{figure}
+\FloatBarrier
+
+The next Histograms show the charge distributions for the 
