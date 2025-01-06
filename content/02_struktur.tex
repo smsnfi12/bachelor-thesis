@@ -32,6 +32,18 @@
 % \end{verbatim}
 % aus der Präambel oder ändern Sie den Zahlenwert entsprechend. Das Inhaltsverzeichnis sollte für eine Bachelorarbeit auf eine Seite passen.
 
+The analysis will be split into two parts, with the first part focussing on the probabilities and frequencies of coincident events, while the second part 
+focusses on understanding the physical nature of what constitutes a coincident event. 
+
+\section{Probabilities of coincident events}
+
+As explained in \ref{sec:coin} the probability function of coincidence events against total events can be estimated to follow a poisson distribution.
+A theoretical distribution for different trigger windows is shown in figure(). In order to put this into a meaningful context, a relation of the muon event rate and 
+their corresponding energy is extracted from a monte carlo simulation(). Figure~() shows a histogram of the variable muon event rate on an energy spectrum. 
+With this data describing a step function $rate(energy)$, equation~\ref{eq:multi_rate} can be used to visualize the relation between the muon energy and their 
+corresponding rate of coincident events, which is shown in () for different readout windows. 
+% show plots and describe distribution. give an energy intervall of likely coincident events.
+
 \section{Analysis of the Fixed Rate Trigger}
 
 The functionality of the FRT is described in section~\ref{sec:daq}. In the following section, the spectrum of the data aquired by the FRT will be analyzed in 
@@ -79,7 +91,7 @@ corresponding energy is extracted from a monte carlo simulation(). Figure~() sho
 figure~\ref{fig:frt_mu_sub} shows the distribution of charges that the detector measures for each subevent. A subset of these subevents pass the muon filter, 
 meaning they are most likely actual muon events. The expectation would be, that most of the subevent which pass the muon filter would be seen at higher charge values,
 since their energy and therefore the intensity of Cherenkov radiation would be much greater that a signal caused by any kind of noise. As can be seen in the 
-histogram however, this is not the case. Taking a look at the linear visiualization of the distributions, as done in figure~\ref{fig:frt_mu_sub_comp}, it is obvious that 
+histogram however, this is not the case. Taking a look at the linear visualization of the distributions, as done in figure~\ref{fig:frt_mu_sub_comp}, it is obvious that 
 both spectrums are clearly poisson distributed with a peak at the same charge value of around 80 PE. While a poisson distribution can be expected, it is 
 suspicious that the peak of both distributions are around the same value. 
 
@@ -120,7 +132,7 @@ which makes a discrimination of muon event based solely on the charge measured b
 Another analysis can be made comparing the the q frames and p frames of the events collected by the FRT, as explained in section~\ref{sec:frt}. A comparison can be seen in 
 figure~(). Very similarly to the comparison of the events that pass the muon filter with those that fail, no significant difference can be seen in the two distributions. 
 It seems that something entirely disconnected from the charge left in the detector determines the distinction between physical events and noise. Even if this is true, 
-the two distributions appear almost identical in shape, which leads to the assumption that something went wrong in the processing of the data. 
+the two distributions appear almost identical in shape, which leads to the assumption that something might have went wrong in the processing of the data. 
 
 \section{coincidence probability}
 
