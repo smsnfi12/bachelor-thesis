@@ -38,18 +38,43 @@ focusses on understanding the physical nature of what constitutes a coincident e
 \section{Probabilities of coincident events}
 
 As explained in \ref{sec:coin} the probability function of coincidence events against total events can be estimated to follow a poisson distribution.
-A theoretical distribution for different trigger windows is shown in figure(). In order to put this into a meaningful context, a relation of the muon event rate and 
-their corresponding energy is extracted from a monte carlo simulation(). Figure~() shows a histogram of the variable muon event rate on an energy spectrum. 
+A theoretical distribution for different trigger windows is shown in figure~\ref{fig:coin_rate_rate}. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Plots/coincidence_rate_poisson.pdf}
+    \caption{A graph showing the relation between the muon event rate and the corresponding event rate assuming a poisson distributed muon event rate.}
+    \label{fig:coin_rate_rate}
+\end{figure}
+
+In order to put this into a meaningful context, a relation of the muon event rate and their corresponding energy is extracted from a monte carlo simulation.
 With this data describing a step function $rate(energy)$, equation~\ref{eq:multi_rate} can be used to visualize the relation between the muon energy and their 
-corresponding rate of coincident events, which is shown in () for different readout windows. 
-% show plots and describe distribution. give an energy intervall of likely coincident events.
+corresponding rate of coincident events, which is shown in Figure~\ref{fig:coin_rate_comp}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Plots/concidence_rate_energy.pdf}
+    \caption{A comparison between the muon event rate and the corresponding coincident event rate on an energy spectrum.}
+    \label{fig:coin_rate_comp}
+\end{figure}
+
+The same thing can be done on a zenith angle spectrum, for which the data is extracted from the same set of monte carlo data. This can be seen in figure().
+
+% \begin{figure}
+    
+% \end{figure}
+
+Both Histograms only show the theoretical coincidence event rate for a fixed trigger window $\tau$. However, diffrent triggers have diffrent readout windows, which 
+can significantly change the probability of a coincident event. Treating the readout window as a variable, the coincident event probabilities can be visualized in 
+a heat map to get a look at the effects of changing the readout window of a trigger %.
 
 \section{Analysis of the Fixed Rate Trigger}
 
 The functionality of the FRT is described in section~\ref{sec:daq}. In the following section, the spectrum of the data aquired by the FRT will be analyzed in 
-detail. In this section, an event will mean everyting that is measured within a single trigger window. A link to the exact data used can be found 
-in the appendix. The following Plots give an overview of the charge distribution of the signals collected by the FRT. Firstly, the charge distribution making up a 
-single event are shown in the Histograms~\ref{fig:single_charge_hist}. As expected, the counts follow a visible poisson distribution.
+detail. For the analysis of the FRT, an event will mean everyting that is measured within a single trigger window. 
+
+The following Plots give an overview of the charge distribution of the signals collected by the FRT. Firstly, the charge distribution making up a 
+single event is shown in the Histograms~\ref{fig:single_charge_hist}. As expected, the counts follow a visible poisson distribution.
 
 \begin{figure}
     \centering
@@ -57,7 +82,6 @@ single event are shown in the Histograms~\ref{fig:single_charge_hist}. As expect
     \caption{histograms of the charge distribution of a subset of FRT events from April 2016.}
     \label{fig:single_charge_hist}
 \end{figure}
-
 
 In the histograms~\ref{fig:monthly_charge_hist} the data is grouped together in a way that shows one entry as one event where the charges are summed up, meaning the 
 integrals of the histograms~\ref{fig:single_charge_hist} would each make up one event. 
@@ -69,16 +93,12 @@ integrals of the histograms~\ref{fig:single_charge_hist} would each make up one 
     \label{fig:monthly_charge_hist}
 \end{figure}
 
-Best visible in the histogram for may, up to a charge value of around \SI{3300}{PE} the count rate follows a pretty clear gaussian distribution, which is followed 
+Best visible in the histogram for May, up to a charge value of around \SI{3300}{PE} the count rate follows a pretty clear gaussian distribution, which is followed 
 by an exponential decline. If the background noise, whatever it might be, follows a gaussian distribution, a sensible idea would be to fit a gauss for the charge 
-values up to the critical point, after which the distribution type changes. Then a filter which is looking for 'real' events might filter out anything that lies 
-within the fitted realm. 
-
-\section{Muon Rate}
-
-As explained in \ref{sec:coin} the probability function of coincidence events against total events can be estimated to follow a poisson distribution.
-A theoretical distribution for different trigger windows is shown in figure(). In order to put this into a meaningful context, a relation of the muon event rate and their 
-corresponding energy is extracted from a monte carlo simulation(). Figure~() shows a histogram of the variable muon event rate on an energy spectrum. 
+values up to the critical point, after which the distribution type changes. This would allow a look into the spectrum of ''pure'' noise in IceCube, aswell as provide 
+some insight on the spectrum
+In order to verify the sensibilitly of this appraoch, a deeper look is taken into the data collected by the FRT. As one event can be split into 
+a multitude of subevents. These subevents are built 
 
 \section{Description of plots for later use}
 \begin{figure}
@@ -92,9 +112,7 @@ figure~\ref{fig:frt_mu_sub} shows the distribution of charges that the detector 
 meaning they are most likely actual muon events. The expectation would be, that most of the subevent which pass the muon filter would be seen at higher charge values,
 since their energy and therefore the intensity of Cherenkov radiation would be much greater that a signal caused by any kind of noise. As can be seen in the 
 histogram however, this is not the case. Taking a look at the linear visualization of the distributions, as done in figure~\ref{fig:frt_mu_sub_comp}, it is obvious that 
-both spectrums are clearly poisson distributed with a peak at the same charge value of around 80 PE. While a poisson distribution can be expected, it is 
-suspicious that the peak of both distributions are around the same value. 
-
+both spectrums are clearly poisson distributed with a peak at the same charge value of around 80 PE. While a poisson distribution can be expected, that
 \begin{figure}[H] % The [H] forces the figure to be placed exactly here
     \centering
     \begin{subfigure}{0.49\textwidth}
@@ -129,7 +147,7 @@ which makes a discrimination of muon event based solely on the charge measured b
     \label{fig:frt_mu_2}
 \end{figure}
 
-Another analysis can be made comparing the the q frames and p frames of the events collected by the FRT, as explained in section~\ref{sec:frt}. A comparison can be seen in 
+Another analysis can be made comparing the the q frames and p frames of the events collected by the FRT, as explained in section~\ref{sec:daq}. A comparison can be seen in 
 figure~(). Very similarly to the comparison of the events that pass the muon filter with those that fail, no significant difference can be seen in the two distributions. 
 It seems that something entirely disconnected from the charge left in the detector determines the distinction between physical events and noise. Even if this is true, 
 the two distributions appear almost identical in shape, which leads to the assumption that something might have went wrong in the processing of the data. 
@@ -139,4 +157,5 @@ the two distributions appear almost identical in shape, which leads to the assum
 Assuming the capability to detect coincident events by their signature in the DOMs, the question still arises, what exactly constitutes the coinciding event. As 
 there seems to be a significant probability for an event leaving a signature similar to that of a muon, but not being one. In the following segment, an estimation
 can be made on how likely it is for a coincident event to be a true coincident muon, based on different types of knowledge about the event. 
+
 

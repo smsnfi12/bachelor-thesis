@@ -7,7 +7,7 @@
 % Um der Längenbeschränkung zu genügen, darf auch nicht an der Schriftgröße,
 % dem Zeilenabstand oder dem Satzspiegel (bedruckte Fläche der Seite) manipuliert werden.
 
-
+\section{An general overview of the IceCube detector}
 The IceCube neutrino detector is a cubic kilometer scale particle detector located near the Amundsen-Scott South Pole Station. The primary goal of 
 the detector is the detection of high energy neutrinos as messenger particles for study of astrophysical sources. The detector unit is split into three 
 parts, which are the In-Ice Array, the IceTop, and the DeepCore. 
@@ -23,7 +23,7 @@ The DeepCore is a sub-array within the In-Ice Array and is located at depths ben
 \num{7} strings from the In-Ice Array. This creates a more densly packed arrangement of DOMs in the lower center of the detector, which increases its 
 ability to detect low-energy signals.
 
-Figure~\ref{fig:icecube_sketch_01} shows a visual representation of this structure.
+Figure~\ref{fig:icecube_sketch_01} shows a visual representation of this structure. For more details on the structure and build of the detector, see \cite{einstein}.
 
 \begin{figure}[htbp]
     \centering
@@ -31,7 +31,7 @@ Figure~\ref{fig:icecube_sketch_01} shows a visual representation of this structu
     \caption{An overview of the arrangement inside of the detector.}\label{fig:icecube_sketch_01}
 \end{figure}
 
-\section{Digital Optical Module}
+\section{Digital Optical Module}\label{sec:dom}
 
 A single DOM consists of a glass housing, in which the PMT and the corresponding curcuit boards are located. The technical part of the functionality of 
 the circuit boards are not of interest for this analysis, so I will not go into detail on that topic. The PMT however is the actual detecting unit of 
@@ -51,11 +51,19 @@ photons hitting the PMT\@.
 
 \section{Cherenkov radiation}
 
-The light detected by the photomultipliers is only a secondary signal called Cherenkov radiation. It is created when a charged particle travels through a 
-dielectric medium with a velocity greater than the speed of light inside of the medium. The charged particle polarizes the medium's molecules in its
+The light detected by the photomultipliers is only a secondary signal called Cherenkov radiation~\cite{einstein}. It is created when a charged particle travels through a 
+dielectric medium with a velocity greater than the speed of light inside of this medium. The charged particle polarizes the medium's molecules in its
 immediate surroundings while passing through it. The excited molecules then return to their ground state by emitting their superfluous energy as light.
 Because the light travels slower than the particle exciting the molecules, the light waves do not interfere destructively, but build a conical shock front 
-similar in principle to that of an object, moving through air at supersonic velocities. This cone of light is the Cherenkov radiation detected by the PMTs.
+similar in principle to that of an object moving through air at supersonic velocities. This cone of light is the Cherenkov radiation detected by the PMTs.
+As explained in section~\ref{sec:dom}, the measured charge is proportional to the intensity of the Cherenkov radiation, which itself is proportional to the 
+energy lost by the particle inducing the radiation. Another important value is the angle of the cherenkov light cone, which is dependent on the velocity of the 
+particle creating it. This relation is given by 
+\begin{equation}
+    \cos{\theta_c} = \frac{c}{nc},
+\end{equation}
+where $n$ is the refractive index of the medium. A higher velocity will therefore lead to a larger angle and vice versa, which, together with the information about 
+the charge deposited in the DOMs, enables the possibility of recreating the detected particle's characteristics.
 
 \section{Muons}
 
@@ -72,8 +80,12 @@ produced via the following decay modes:\\
 \end{align}
 
 These muons have an average lifetime of about \SI{2.2}{ms}, which is enough for a significant amount of them reaching the earths surface due the their 
-ultrarelativistic velocities. When a muon travels through the ice within IceCube, it produces Cherenkov radiation due to its charge and high velocities and 
-can thus be indirectly measured.
+ultrarelativistic velocities. Details on the effects of relativistic velocities on spacetime can be found in~\cite{einstein}. When a muon travels through the ice 
+within the IceCube detector, it produces Cherenkov radiation due to its charge and high velocities and 
+can thus be indirectly measured. Realisticly, muons which hit the detector are usually clustered up in bundles, since the cosmic rays responsible for their production
+mostly create multiple secondary particles which then decay into muons. Analyzing the cumulative energies of these bundles can provide some insight into the primary 
+energies of the original cosmic rays. For a deeper look into the physical characteristics of muons and their creation in the atmosphere, see~\cite{einstein}.
+
 
 \section{Data aquisition}\label{sec:daq}
 
@@ -89,8 +101,13 @@ charged particle emitting Cherenkov radiation.
 Another trigger is the fixed rate trigger (FRT) which is of great importance for the analysis of this thesis. The FRT does not get triggered 
 by any multiplicity of events. It is a timed trigger which reads out the entire detector, meaning all functioning DOMs for \SI{10}{ms}
 every \SI{300}{s}. Since there are no conditions of any kind in place for this trigger, it saves everything being measured during the 
-readout time frame. This allows a precise look into the low energy spectrum of signals hitting the detector which is significant for the 
-analysis of the backround noise in IceCube. An overview of different triggers, which are not primarily significant for this thesis is shown 
+readout time frame. This trigger holds a speical significance for the analysis of coincident events in IceCube. 
+Analyzing the signals collected by the FRT might open a window into the unfiltered distribution of signals collected by the detector. 
+As the FRT's data does not undergo any data reduction, it includes all backround noise aswell as all other low energy events. 
+Since the FRT has an unusually large readout window compared to other triggers, a single event consists of multiple subevents, each of which constitutes
+a physical event occurring. These subevents are saved as P-frames, while the whole readout window is saved as a Q-frame.
+In theory, physical events can thus be distinguished from any noise making up the rest of the q frames.\\  
+An overview of different triggers, which are not primarily significant for this thesis is shown 
 in figure~\ref{fig:triggers}.
 
 \begin{figure}[htbp]
@@ -102,12 +119,13 @@ in figure~\ref{fig:triggers}.
 \section{True coincident events}\label{sec:coin}
 
 The primary goal of this thesis is the analysis of coincident events in IceCube. This is not to be confused with coincident signals or hits, which are used 
-to determine if an event is constituted by the signals. A coincident however means that two or more real events take place in the detector within the time 
-frame of a readout window from some trigger. The SMT for example will group together any multiplicity of HLC hits in the detector and categorize them as one
-event, as long as no other measures are taken. The resulting events would falsely be forwarded as one which leads to the loss of information aswell as 
-a count rate of events in the long run. \\
-Firstly, a rough estimation can be made about the percentile of coincident events for any given event rate. A single particle type's spectrum can be 
-estimated to be poisson distributed, so probability to measure $k$ events becomes\\ 
+to determine if indeed an event is constituted by the signals. A coincident event however means that two or more ''real'' events take place in the detector within the 
+time frame of a readout window from some trigger. The SMT for example will group together any multiplicity of HLC hits in the detector and categorize them as one
+event, as long as no other measures are taken. The resulting events could falsely be forwarded as one which leads to the loss of information aswell as 
+a false count rate of events in the long run. \\
+Firstly, an estimation can be made about the percentile of coincident events for any given event rate. A single particle type's spectrum can be 
+estimated to be poisson distributed. For more information about why this approximation is valid, see~\cite{einstein}. Therefore the  probability to measure $k$ events 
+becomes\\ 
 
 \begin{equation}
     P_{\lambda}(k) = \frac{\lambda^k}{k!}\text{e}^(-\lambda) \; .
@@ -133,12 +151,6 @@ Multiplying with the event rate $R$ then yields the coincidence rate $R_{co}$ de
     \label{eq:multi_rate}
 \end{equation}\\
 
-\section{Fixed Rate Trigger}\label{sec:frt}
+This makes for a useful connection between the coincidence event rate and any spectrum that has a known or easily producible relation to a certain event rate.
 
-The FRT, as explained in section\@~\ref{sec:daq}, holds a speical significance for the analysis of coincident events in IceCube. 
-Analyzing the signals collected by the FRT opens a window into the unfiltered distribution of signals collected by the detector. 
-As the FRT's data does not undergo any data reduction, it includes all backround noise aswell as all other low energy. 
-Since the FRT has an unusually large readout window compared to other triggers, a single event consists of multiple subevents, each of which constitutes
-a physical event occurring. These subevents are saved as P-frames, while the whole readout window is saved as a Q-frame.
-In theory, physical events can thus be distinguished from any noise making up the rest of the q frames.  
 
