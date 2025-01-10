@@ -65,7 +65,7 @@ particle creating it. This relation is given by
 where $n$ is the refractive index of the medium. A higher velocity will therefore lead to a larger angle and vice versa, which, together with the information about 
 the charge deposited in the DOMs, enables the possibility of recreating the detected particle's characteristics.
 
-\section{Muons}
+\section{Muons}\label{sec:muons}
 
 A significant percentile of the particles measured in IceCube are muons, which are elementary particles categorized as leptons by the standard model.
 This means they carry an electric charge of $\pm 1e$ and have spin $\frac{1}{2}$. The mass of the muon is \num{105.658}\text{MeV}. IceCube detects
@@ -106,7 +106,7 @@ Analyzing the signals collected by the FRT might open a window into the unfilter
 As the FRT's data does not undergo any data reduction, it includes all backround noise aswell as all other low energy events. 
 Since the FRT has an unusually large readout window compared to other triggers, a single event consists of multiple subevents, each of which constitutes
 a physical event occurring. These subevents are saved as P-frames, while the whole readout window is saved as a Q-frame.
-In theory, physical events can thus be distinguished from any noise making up the rest of the q frames.\\  
+In theory, physical events can thus be distinguished from any noise making up the rest of the Q-frames.\\  
 An overview of different triggers, which are not primarily significant for this thesis is shown 
 in figure~\ref{fig:triggers}.
 
@@ -153,4 +153,24 @@ Multiplying with the event rate $R$ then yields the coincidence rate $R_{co}$ de
 
 This makes for a useful connection between the coincidence event rate and any spectrum that has a known or easily producible relation to a certain event rate.
 
+\section{Different spectrums for visualizations}\label{sec:spec}
+% energy spectrum and zenith angle spectrum ? 
+The majority of graphics shown in the analysis part of this thesis, are some variables of interest on either one of the following spectrums. I will thus briefly 
+explain the theory behind their physical meanings in the context of the IceCube detector. 
 
+\subsection{The Energy Spectrum}
+Energy as a direct observable in IceCube is not something one has access to when analyzing 'real' data, meaning acutal measurements from the detector. 
+This has to do with the way that the events of interest are only indirectly measured. While the energies of certains events can be recreated from the raw data
+collected, another way of accessing energy as a variable is to work with simulated data. 
+For any plot in this thesis, that shows an energy spectrum, simualted monte carlo data is used. 
+For a deeper look into the energy distribution of muons in IceCube, see~\cite{einstein}. 
+
+\subsection{The Zenith Angle Spectrum}
+Muons created in the atmosphere have differing lengths to travel before they hit the surface, depending on their angle, at which they move towards the surface. 
+In short, this leads to more muons being detected at a zenith angle of \SI{90}{\degree} relative to the surface of the earth, while with sharper angles, the 
+count rate, aswell as their energy, declines. Refer to~\cite{einstein} for more details. 
+
+\subsection{The Charge Spectrum}
+For the analysis of the events in the FRT, the energy of an event is directly accessible. Therefore, the charge deposited in the detector is used as the 
+spectrum on which to show various measures of interest. As briefly mentioned in section~\ref{sec:muons}, the charge value of a signal is a significant 
+measurement for the recreation of the energy, which is why it is a reasonable measure to use as a spectrum for counting events. 
