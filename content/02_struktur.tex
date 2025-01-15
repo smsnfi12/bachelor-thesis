@@ -160,10 +160,37 @@ figure~\ref{fig:filtermask}.
 The most significant of these histograms is the one showing the distribution of subevents passing the muon filter. 
 Similarly to the comparison in~\ref{fig:frt_mu_sub_comp}, for the majority of subevents, the distributions match each other quite well in terms of their shape, up 
 to a around \num{400}~\unit{PE}, where the subevents passing the muon filter start to make up a larger portion of all events. For any subevent measuring a charge of 
-at least \num{1000}~\unit{PE}, the muon filter is always passed. (bedeutet das passen eines Filters eigentlich, dass es safe dieses event ist ? oder wird es dadurch nur
-zu einem kandidaten? eher letzteres oder ? ) 
+at least \num{1000}~\unit{PE}, the muon filter is passed.  
 
+Another noticible aspect is the relatively low percentile of total subevents passing the muon filter. As discussed in ~\cite{einstein}, muon events are supposed to make 
+up the vast majority of physical events in IceCube. However, the muon subevents determined by its filter only make up \SI{1}{\percent} of the total counts. 
+This might be explainable if the comparison was made between muon subevents and Q-frame subevents, but comparing them to the subevents that should only consist of  
+physically relevant events, the expectation would be for the muons to make up the vast majority of these subevents, passing the muon filter. This might be another clue 
+that the P-frames created in the FRT data, could still have some sort of noise in them. 
 
+Regardless of why the data shows the mentioned trends, the unavoidable conlusion is, that it is not possible to distinguish noise from signal in a trivial way, based 
+on this data. This forces the following analysis in a different direction, than originally planned. The subsequent part of the thesis will thus focus on a detailled 
+analysis of data collected by FRT, in order to reevaluate its use for the study of coincident events. 
+
+In order to dive deeper into the characteristics of the FRT events, the signals measured by the detector need to be analysed in a way that focuses on the individual 
+DOMs. For this, the mean and the standard deviation of the charges for each DOM is calculated over a period of time of \num{47}, in order to check for any anomalies
+within individual DOMs. Figure~47 shows the distribution of the mean charges of every single DOM in the detector. As visible in the heatmap, the mean charges seem to 
+be quite evenly distributed throughout the DOMs, with the exeption of the DOM (61,13), which shows an unusually high mean charge of \num{5.08}~\unit(PE). Another 
+notable feature, although not easily visible, is the slightly higher mean charge around the 35th OM. Some of bins, representing the DOMs, are completely empty, which 
+might point to a defect. Since the DOMs which are not measuring any charge only make up about \SI{1}{\percent} of the total DOMs and are evenly distributed throughout
+the detector, this should not be a an issue. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Plots/selected_filters_subplot.pdf}
+    \caption{A Distribution of Signals passing various Filters.}
+\end{figure}
+
+Another heat map in figure~47 shows the distribution of mean charges and their standard deviations of the DOMs. This is shown for the Q-frames and P-frames 
+respectively. Expectedly, the P-frames contain more signals with a higher mean charge aswell as larger standard variation. The majority DOMs in the P-frames still have 
+relatively low charge numbers, aswell as low standard deviation. 
+
+First of all, we can 
 
 
 % \section{Description of plots for later use}
