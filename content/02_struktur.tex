@@ -35,7 +35,7 @@
 The analysis will be split into two parts, with the first part focussing on the probabilities and frequencies of coincident events, while the second part 
 focusses on understanding the physical nature of what constitutes a coincident event. 
 
-\section{Probabilities of coincident events}\label{sec:muon_coincidence}
+\section{Probabilities of coincident events}%\label{sec:muon_coincidence}
 
 As explained in \ref{sec:coin} the probability function of coincidence events against total events can be estimated to follow a poisson distribution.
 A theoretical distribution for different trigger windows is shown in figure~\ref{fig:coin_rate_rate}. 
@@ -49,40 +49,46 @@ A theoretical distribution for different trigger windows is shown in figure~\ref
 
 In order to put this into a meaningful context, a relation of the muon event rate and their corresponding energy is extracted from a monte carlo simulation.
 With this data describing a step function $rate(energy)$, equation~\ref{eq:multi_rate} can be used to visualize the relation between the muon energy and their 
-corresponding rate of coincident events, which is shown in Figure~\ref{fig:coin_rate_comp}.
+corresponding rate of coincident events. Equivalent calculations are made on a zenith angle spectrum, for which the data is extracted from the same set of monte 
+carlo data. Both of these distributions, along with the corresponding intervals, in which the coincidence probability exceeds \SI{0.1}{\percent}, are shown in 
+figure~\ref{fig:coin_rate_combined}.
 
-\begin{figure}
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=0.7\textwidth]{Plots/concidence_rate_energy.pdf}
-    \caption{A comparison between the muon event rate and the corresponding coincident event rate on an energy spectrum.}
-    \label{fig:coin_rate_comp}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=0.7\textwidth]{Plots/coincidence_rate_energy.pdf}
+    \end{subfigure}
+    \vspace{1em} % Optional vertical space between the plots
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=0.7\textwidth]{Plots/coincidence_rate_zenith.pdf}
+    \end{subfigure}
+    \caption{Comparisons of the muon event rate and corresponding coincident event rate on energy and zenith angle spectra.}
+    \label{fig:coin_rate_combined}
 \end{figure}
 
-The same thing can be done on a zenith angle spectrum, for which the data is extracted from the same set of monte carlo data. This can be seen in figure().
 
-% \begin{figure}
-    
-% \end{figure}
-
-Both Histograms only show the theoretical coincidence event rate for a fixed trigger window $\tau$. However, diffrent triggers have diffrent readout windows, which 
+Both histograms only show the theoretical coincidence event rate for a fixed trigger window $\tau$. However, diffrent triggers have diffrent readout windows, which 
 can significantly change the probability of a coincident event. Treating the readout window as a variable, the coincident event probabilities can be visualized in 
-a heat map to get a look at the effects of differing readout windows, as shown in figures~\ref{fig:heat_energy} and~\ref{fig:heat_zenith} 
+a heat map to get a look at the effects of differing readout windows, as shown in figure~\ref{fig:heatmaps_combined}.
 
-\begin{figure}
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=0.7\textwidth]{Plots/heatmap_energy.png}
-    \caption{prototype}
-    \label{fig:heat_energy}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=0.7\textwidth]{Plots/heatmap_energy.png}
+    \end{subfigure}
+    \vspace{1em} % Optional vertical space between the plots
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=0.7\textwidth]{Plots/heatmap_zenith.png}
+    \end{subfigure}
+    \caption{Prototypes of the heatmaps for energy and zenith angle spectra.}
+    \label{fig:heatmaps_combined}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\textwidth]{Plots/heatmap_zenith.png}
-    \caption{prototype}
-    \label{fig:heat_zenith}
-\end{figure}
 
-% explain it
 
 \section{Analysis of the Fixed Rate Trigger}
 
@@ -168,31 +174,67 @@ This might be explainable if the comparison was made between muon subevents and 
 physically relevant events, the expectation would be for the muons to make up the vast majority of these subevents, passing the muon filter. This might be another clue 
 that the P-frames created in the FRT data, could still have some sort of noise in them. 
 
-Regardless of why the data shows the mentioned trends, the unavoidable conlusion is, that it is not possible to distinguish noise from signal in a trivial way, based 
+Regardless of why the data shows the mentioned trends, the unavoidable conlusion is that it is not possible to distinguish noise from signal in a trivial way, based 
 on this data. This forces the following analysis in a different direction, than originally planned. The subsequent part of the thesis will thus focus on a detailled 
 analysis of data collected by FRT, in order to reevaluate its use for the study of coincident events. 
 
-In order to dive deeper into the characteristics of the FRT events, the signals measured by the detector need to be analysed in a way that focuses on the individual 
+
+
+
+\section{for chat gpt}
+
+In order to dive deeper into the characteristics of the FRT events, the signals measured by the detector are analyzed, focussing individual 
 DOMs. For this, the mean and the standard deviation of the charges for each DOM is calculated over a period of time of \num{47}, in order to check for any anomalies
 within individual DOMs. Figure~47 shows the distribution of the mean charges of every single DOM in the detector. As visible in the heatmap, the mean charges seem to 
 be quite evenly distributed throughout the DOMs, with the exeption of the DOM (61,13), which shows an unusually high mean charge of \num{5.08}~\unit(PE). Another 
-notable feature, although not easily visible, is the slightly higher mean charge around the 35th OM. Some of bins, representing the DOMs, are completely empty, which 
-might point to a defect. Since the DOMs which are not measuring any charge only make up about \SI{1}{\percent} of the total DOMs and are evenly distributed throughout
-the detector, this should not be a an issue. 
+notable aspect, although not easily visible, is the slightly higher mean charge around the 35th OM, which will be examined at a later point. Some of bins, representing 
+the individual DOMs, are completely empty, which 
+might point to a defect. 
+
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\textwidth]{Plots/selected_filters_subplot.pdf}
-    \caption{A Distribution of Signals passing various Filters.}
+    \includegraphics[width=0.7\textwidth]{Plots/mean_charge_all_dom.png}
+    \caption{heatmap of p-frames and q-frames mean charges.}
 \end{figure}
 
 Another heat map in figure~47 shows the distribution of mean charges and their standard deviations of the DOMs. This is shown for the Q-frames and P-frames 
-respectively. Expectedly, the P-frames contain more signals with a higher mean charge aswell as larger standard variation. The majority DOMs in the P-frames still have 
-relatively low charge numbers, aswell as low standard deviation. 
+respectively. Expectedly, the P-frames contain more signals with a higher mean charge aswell as larger standard variation. However, aligning with previous observations
+in figures~\ref{fig:frt_mu_sub_comp} and~\ref{fig:filtermask}, the vast majority of signals are of the same magnitude in mean charge and variance as the signals in the 
+Q-frames.
 
-First of all, we can 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Plots/mean_std_charge.png}
+    \caption{mean charges distribution comparison p- and q-frames}
+\end{figure}
 
+Layering the charge per time distributions of the individual DOMs, clear peaks of charges are visible. This is done for the P-frames for all the signals above a 
+certain mean charge and std threshold. Here are the plots visualizing this:
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Plots/p_high_mean_charges_t.png}
+    \caption{p high mean charges}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Plots/q_high_mean_charges_t.png}
+    \caption{p low mean charges}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Plots/q_high_mean_charges_t80.png}
+    \caption{p low mean charges cut}
+\end{figure}
+
+As an idea to filter out coincident events, some conditions where set to look for clusters of signals within singular DOMs. Here is the plot created.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Plots/p_high_mean_counts.png}
+    \caption{p high mean counts}
+\end{figure}
 % \section{Description of plots for later use}
 % \begin{figure}
 %     \centering
