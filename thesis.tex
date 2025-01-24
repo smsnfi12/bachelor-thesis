@@ -33,7 +33,7 @@
 
 % load english (for abstract) and ngerman language
 % the main language has to come last
-\usepackage[american, ngerman]{babel}
+\usepackage[american]{babel}
 
 % intelligent quotation marks, language and nesting sensitive
 \usepackage[autostyle]{csquotes}
@@ -128,21 +128,22 @@
 \usepackage[pdfusetitle, unicode, linkbordercolor=tugreen, citebordercolor=tugreen]{hyperref}
 \usepackage{bookmark}
 \usepackage[shortcuts]{extdash}
+\usepackage{makecell}
 
 %------------------------------------------------------------------------------
 %-------------------------    Angaben zur Arbeit   ----------------------------
 %------------------------------------------------------------------------------
 
 \author{Sebastian Fischer}
-\title{\LaTeX-Dokumentenklasse und Vorlage für Abschlussarbeiten an der TU Dortmund}
+\title{Analyzing Coincident Muon events in the IceCube Neutrino Observatory with a focus on the Fixed Rate Trigger}
 \date{2025}
 \birthplace{Göttingen}
 \chair{Arbeitsgruppe Astroteilchenphysik}
 \division{Fakultät Physik}
 \thesisclass{Bachelor of Science}
-\submissiondate{11.01.2025}
+\submissiondate{25.01.2025}
 \firstcorrector{Prof.~Dr.~Dr. Wolfgang Rhode}
-\secondcorrector{Prof.~Dr.~Zweitgutachter}
+\secondcorrector{Dr. Jens Weingarten}
 
 % tu logo on top of the titlepage
 \titlehead{\includegraphics[height=1.5cm]{logos/tu-logo.pdf}}
@@ -161,10 +162,11 @@
 
 \mainmatter
 % Hier beginnt der Inhalt mit Seite 1 in arabischen Ziffern
-\input{content/01_einleitung.tex}
-\input{content/02_struktur.tex}
-\input{content/03_grundlagen.tex}
-\input{content/04_figs_tabs.tex}
+\input{content/00_abstract.tex}
+\input{content/01_intro.tex}
+\input{content/02_theorie.tex}
+\input{content/03_analysis.tex}
+\input{content/04_discussion.tex}
 
 \appendix
 % Hier beginnt der Anhang, nummeriert in lateinischen Buchstaben
