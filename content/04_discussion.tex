@@ -1,8 +1,27 @@
 \chapter{Discussion of Results}\label{chap:discussion}
 
-\section{Theoretical calculations}
-The calculations of the theoretical coincident muon event rate in section~\ref{sec:muon_coincidence} make for the most unambiguous part 
-of the analysis. The resulting coincidence event rate, depending on the readout window can serve as a framework for future analysis on coincident events.
+\section{Theoretical Calculations}
+The calculations of the theoretical coincident muon event rate in section~\ref{sec:muon_coincidence} provide a simple framework for estimating 
+coincident event probabilities under varying trigger windows. As seen in figure~\ref{fig:coin_rate_combined}, the theoretical coincidence probability 
+exceeds \SI{1}{\percent} for a readout window of \SI{5}{\micro\second} for significant intervals of both the energy- and the zenith angle spectrum. 
+Even if this probability is subject to further variables, as it most likely is, it appears that the magnitude of coincident events is at least 
+significant enough to consider for precise analyses. As the analysis here is only based on Monte Carlo simulations, similar evaluations based on 
+experimental data could be interesting. Also, further variables could be taken into account.
+Based on where in the detector two or more events are detected around the same time, the spatial and geometric conditions for certain triggers could have 
+an impact on the likelihood of a coincident getting detected as such. 
 
 \section{Fixed Rate Trigger}
-The analysis of the FRT data proved challenging. 
+Analyzing the FRT data in detail serves as an interesting insight into the unfiltered patterns of detected signals in IceCube. The comparison of filtered 
+and unfiltered signals revealed, that filtering by physically relevant signals does not justify any cutoff at low charges, as shown in figure~\ref{fig:frt_mu_sub_comp_1}.
+While this reality created significant challenges for the subsequent analyses, it is a valuable finding and should be analyzed further. 
+The main challenge arising from the lack of a clear distinction between signals and possible noise was, that characterizing possible event or coincident event candidates 
+proved difficult. As a result, a number of the analyses created for the FRT data were left with no concrete results. 
+However, some interesting features were visible when analyzing the charge over time functions for different subevents, as shown in figure~\ref{fig:high_low_comp}.
+This led to the attempt of characterizing possible coincident events. This attempt did not yield the desired level of success. As the features of coincident events 
+are highly complex, the relatively simple approach of finding peaks in a projection of charge and frequency could be considered an oversimplification.
+Still, inspecting the charges and counts of signals in the subevents as a function of time might be a valuable approach to finding coincident events, when combined
+with different methods to search for clusters. Machine learning algorithms could be used for more a more complex search for distinguishing characteristics.
+
+\section{Conclusion}
+While the unsatisfactory lack of concrete results is undeniable, valuable insights were found on the FRT, which would not be accessible by analyzing any other 
+datasets available for IceCube. Further evaluation and the use of machine learning algorithms could possibly lead to more concrete results in the future.

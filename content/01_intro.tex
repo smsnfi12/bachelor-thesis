@@ -1,15 +1,16 @@
 \chapter{Introduction}
 
-The IceCube Neutrino Observatory, located at the South Pole, is the largest particle detector of its kind, designed to detect high-energy neutrinos originating 
-from astrophysical sources. A key challenge in IceCube's data analysis lies in identifying coincident muon events, which occur when two or more muons from separate 
-cosmic ray interactions reach the detector within a short time window. Understanding these events provides valuable insights into cosmic ray interactions and the 
+The IceCube Neutrino Observatory, located at the geographic South Pole, is the largest particle detector of its kind, designed to detect high-energy neutrinos originating 
+from astrophysical sources. One of the challenges in IceCube's data analysis lies in identifying coincident muon events, which occur when two or more muons or muon bundles
+from separate 
+primary particles reach the detector within a short time window. Understanding these events provides valuable insights into cosmic ray interactions and the 
 detector's capabilities.
 This thesis focuses on analyzing coincident events in IceCube with a particular emphasis on the Fixed Rate Trigger (FRT), a unique data acquisition method that 
 records unfiltered signals across the entire detector. Unlike other triggers that apply stringent filtering criteria, the FRT provides a comprehensive view of 
-noise distributions and low-energy signals, making it ideal for studying coincident events. However, the large readout window of the FRT poses challenges in 
-distinguishing significant signals from background noise.
+unfiltered signals, making it ideal for studying coincident events. However, the lack of easily measurable differences between signals and noise poses challenges 
+in distinguishing significant signals from background noise.
 To address this, a combination of theoretical modeling and data analysis was employed. Theoretical calculations based on Poisson statistics were used to estimate 
 coincidence rates, while a Python-based peak detection algorithm was applied to identify significant subevents within FRT data. 
-This thesis is structured as follows: Chapter 1 provides the theoretical background, including an overview of the IceCube detector, the physics of Cherenkov 
-radiation, and the concept of coincident events. Chapter 2 presents the results of the analysis, including the theoretical estimation of coincidence probabilities 
-and the optimized analysis of FRT data. The concluding discussion highlights the broader implications of the findings and potential directions for future research.
+This thesis is structured as follows: Chapter~\ref{chap:theory} provides the theoretical background, including an overview of the IceCube detector, the physics of Cherenkov 
+radiation, and the concept of coincident events. Chapter~\ref{chap:results} presents the results of the analysis, including the theoretical estimation of coincidence probabilities 
+and the analysis of FRT data. The concluding discussion highlights the broader implications of the findings and potential directions for future research.
